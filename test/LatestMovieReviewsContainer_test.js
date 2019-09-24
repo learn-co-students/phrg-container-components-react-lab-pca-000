@@ -40,6 +40,8 @@ describe('<LatestMovieReviewsContainer />', () => {
   });
 
   it('should fetch data from the New York Times API', () => {
+    let form = wrapper.find('form').first()
+    form.simulate('submit', { preventDefault: () => {} })
     expect(fetchSpy.callCount > 0, "Fetch was not called").to.equal(true);
     expect(fetchSpy.firstCall.lastArg, "Fetch should have the base URL 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'").to.include('https://api.nytimes.com/svc/movies/v2/reviews/all.json?')
   })
